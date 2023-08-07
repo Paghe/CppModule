@@ -17,5 +17,6 @@ int main(void)
     scav.guardGate();
     frag.highFiveGuys();
     Diamond.whoAMi();
+    std::cout << Diamond.getMana() << std::endl;
     return (0);
 }
