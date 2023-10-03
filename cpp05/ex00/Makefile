@@ -1,13 +1,8 @@
-NAME = Brain
+NAME = Bureaucrat
 CXX = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror #-fsanitize=address
 SRC = main.cpp \
-		Animal.cpp \
-		Cat.cpp \
-		Dog.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp \
-		Brain.cpp \
+		Bureaucrat.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
