@@ -1,6 +1,23 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(const std::string name, int grade)  : _name(name), _grade(grade) {}
+void	Bureaucrat::GradeTooHighException(int grade)
+{
+	if (grade <  1)
+		throw std::exception();
+	else
+		this->_grade = grade;
+}
+
+Bureaucrat::Bureaucrat(const std::string name, int grade)  : _name(name)
+{
+	try
+			GradeTooHighException(grade);
+	catch (std::exception& e)
+		std::cout << "Too high" << std::endl;
+}
+
+Bureaucrat::G
+
 Bureaucrat::~Bureaucrat() {}
 
 std::string	Bureaucrat::getName(void) const
@@ -20,11 +37,6 @@ void Bureaucrat::setGrade(int grade)
 	this->_grade = grade;
 }
 
-void	Bureaucrat::GradeTooHighException()
-{
-	if (this->_grade < 1);
-	std::cout <<
-}
 
 
 

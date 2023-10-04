@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <stdexcept>
 
 class Bureaucrat
 {
@@ -13,8 +14,8 @@ class Bureaucrat
 			std::string	getName(void) const;
 	int		getGrade(void) const;
 	void 	setGrade(int grade);
-	void	GradeTooHighException(void);
-	void	Bureaucrat::GradeTooLowException(void);
+	void	GradeTooHighException(int grade);
+	void	GradeTooLowException();
 private:
 		const std::string _name;
 		int _grade;
