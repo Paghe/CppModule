@@ -13,9 +13,8 @@
 
 NAME = Account
 CXX = c++
-CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address
 SRC = Account.cpp \
-		main.cpp \
 		tests.cpp \
 
 OBJ = $(SRC:.cpp=.o)

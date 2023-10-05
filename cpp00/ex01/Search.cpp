@@ -51,7 +51,7 @@ void	PhoneBook::searchUser(void)
 				break ;
 			}
 			index = std::stoi(line);
-			if (index > idx - 1 && index != -1)
+			if (index >= idx && index != -1)
 			{
 				if (!flag)
 					std::cout << "INDEX OUT OF RANGE" << std::endl;
@@ -61,6 +61,8 @@ void	PhoneBook::searchUser(void)
 			}
 			else
 			{
+				std::cout << "MY IDX: " << index << std::endl;
+				std::cout << "CURRENT: " << idx << std::endl;
 				std::cout << getContact(index).getName() << std::endl;
 				std::cout << getContact(index).getLastName() << std::endl;
 				std::cout << getContact(index).getNickName() << std::endl;

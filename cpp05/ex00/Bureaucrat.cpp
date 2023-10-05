@@ -1,22 +1,14 @@
 #include "Bureaucrat.hpp"
 
-void	Bureaucrat::GradeTooHighException(int grade)
+Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name)
 {
-	if (grade <  1)
-		throw std::exception();
+	if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
 	else
 		this->_grade = grade;
 }
-
-Bureaucrat::Bureaucrat(const std::string name, int grade)  : _name(name)
-{
-	try
-			GradeTooHighException(grade);
-	catch (std::exception& e)
-		std::cout << "Too high" << std::endl;
-}
-
-Bureaucrat::G
 
 Bureaucrat::~Bureaucrat() {}
 
