@@ -17,7 +17,7 @@
 #include "Contact.hpp"
 #include <cctype>
 #include <iomanip>
-#define MAX_CONTACTS 7
+#define MAX_CONTACTS 8
 
 class PhoneBook
 {
