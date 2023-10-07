@@ -29,6 +29,24 @@ void Bureaucrat::setGrade(int grade)
 	this->_grade = grade;
 }
 
+void	Bureaucrat::incrementGrade(void)
+{
+	this->_grade--;
+	if (this->_grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else if (this->_grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+}
+
+void	Bureaucrat::decrementGrade(void)
+{
+	this->_grade++;
+	if (this->_grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else if (this->_grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+}
+
 
 
 
