@@ -208,6 +208,6 @@ void	PhoneBook::addUser(void)
 	c.setNickName(addNickName());
 	c.setPhoneNumber(addPhoneNumber());
 	c.setDarkestSecret(addDarkestSecret());
-	this->contact[idx % 7] = c;
+	this->contact[idx % 8] = c;
 	idx++;
 }

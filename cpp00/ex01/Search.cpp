@@ -29,12 +29,12 @@ void	PhoneBook::searchUser(void)
 	index = 0;
 	for(int i = 0; i < MAX_CONTACTS; i++)
 	{
-		if (getContact(i % 7).getName().empty())
+		if (getContact(i % 8).getName().empty())
 				break;
 		std::cout << std::setw(10) << i;
-		std::cout << "|" << std::setw(10) << printValidLength(getContact(i % 7).getName());
-		std::cout << "|" << std::setw(10) << printValidLength(getContact(i % 7).getLastName());
-		std::cout << "|" << std::setw(10) << printValidLength(getContact(i % 7).getNickName());
+		std::cout << "|" << std::setw(10) << printValidLength(getContact(i % 8).getName());
+		std::cout << "|" << std::setw(10) << printValidLength(getContact(i % 8).getLastName());
+		std::cout << "|" << std::setw(10) << printValidLength(getContact(i % 8).getNickName());
 		std::cout << "|" << std::setw(10) << std::endl;
 	}
 	std::cout << "TYPE AN INDEX: " << std::endl;
@@ -53,19 +53,15 @@ void	PhoneBook::searchUser(void)
 				break ;
 			}
 			index = std::stoi(line);
-			if (index > idx && index != -1)
+			if (index >= idx || index > MAX_CONTACTS)
 			{
 				if (!flag)
 					std::cout << "INDEX OUT OF RANGE" << std::endl;
 				flag = true;
-				index = -1;
 				break ;
 			}
 			else
 			{
-
-				std::cout << "MY IDX: " << index << std::endl;
-				std::cout << "CURRENT: " << idx << std::endl;
 				std::cout << getContact(index).getName() << std::endl;
 				std::cout << getContact(index).getLastName() << std::endl;
 				std::cout << getContact(index).getNickName() << std::endl;
