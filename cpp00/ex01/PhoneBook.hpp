@@ -14,6 +14,7 @@
 #define	PHONEBOOK_HPP
 
 #include <iostream>
+#include <sstream>
 #include "Contact.hpp"
 #include <cctype>
 #include <iomanip>

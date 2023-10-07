@@ -52,7 +52,8 @@ void	PhoneBook::searchUser(void)
 				std::cout << "WRONG INPUT" << std::endl;
 				break ;
 			}
-			index = std::stoi(line);
+			std::istringstream ss(line);
+			ss >> index;
 			if (index >= idx || index > MAX_CONTACTS)
 			{
 				if (!flag)
