@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-
+#include <cstdlib>
 std::string	PhoneBook::printValidLength(std::string str)
 {
 	if (str.length() > 10)
@@ -21,10 +21,10 @@ std::string	PhoneBook::printValidLength(std::string str)
 
 void	PhoneBook::searchUser(void)
 {
-	std:: string line;
+	std::string line;
 	int			index;
 	bool		flag;
-
+	char*		endptr;
 	flag = false;
 	index = 0;
 	for(int i = 0; i < MAX_CONTACTS; i++)
@@ -52,8 +52,7 @@ void	PhoneBook::searchUser(void)
 				std::cout << "WRONG INPUT" << std::endl;
 				break ;
 			}
-			std::istringstream ss(line);
-			ss >> index;
+			index = strtol(line.c_str(), &endptr, 10);
 			if (index >= idx || index > MAX_CONTACTS)
 			{
 				if (!flag)
