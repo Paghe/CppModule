@@ -11,11 +11,15 @@ private:
 	const int _gradeSigned;
 	const int _gradeExec;
 public:
+	std::string getName() const;
+	bool	getSigned() const;
+	int 	getGradeSigned() const;
+	int 	getGradeExec() const;
+	void	beSigned(const Bureaucrat &other);
 	Form(std::string const &name, const int gradeSigned, const int gradeExec);
 	Form(const Form & set);
+	Form& operator=(Form const & copy);
 	~Form();
-	void	beSigned();
-	void	signForm();
 class GradeTooHighException : public std::exception
 {
 public:

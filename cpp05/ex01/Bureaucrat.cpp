@@ -69,3 +69,21 @@ Bureaucrat& Bureaucrat::operator=(Bureaucrat const &copy)
 	this->_grade = copy.getGrade();
 	return (*this);
 }
+
+void Bureaucrat::signForm(Form &Form)
+{
+	if (Form.getSigned())
+	{
+		std::cout << this->_name
+		<< " signed "
+		<< Form.getName();
+	}
+	else
+	{
+		std::cout << this->_name
+				  << " couldn't sign "
+				  << Form.getName()
+					<< "because the sign grade is"
+					<< Form.getGradeSigned() << std::endl;
+	}
+}

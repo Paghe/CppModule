@@ -4,7 +4,9 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include "Form.hpp"
 
+class Form;
 class Bureaucrat
 {
 	public:
@@ -14,6 +16,7 @@ class Bureaucrat
 			Bureaucrat& operator=(Bureaucrat const &copy);
 			~Bureaucrat(void);
 			std::string	getName(void) const;
+	void	signForm(Form &Form);
 	int		getGrade(void) const;
 	void 	setGrade(int grade);
 	void	incrementGrade(void);
