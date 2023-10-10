@@ -76,14 +76,14 @@ void Bureaucrat::signForm(Form &Form)
 	{
 		std::cout << this->_name
 		<< " signed "
-		<< Form.getName();
+		<< Form.getName() << std::endl;
 	}
 	else
 	{
 		std::cout << this->_name
 				  << " couldn't sign "
 				  << Form.getName()
-					<< "because the sign grade is"
+					<< " because the sign grade is "
 					<< Form.getGradeSigned() << std::endl;
 	}
 }

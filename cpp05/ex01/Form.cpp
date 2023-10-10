@@ -53,21 +53,19 @@ void	Form::beSigned(const Bureaucrat &other)
 		this->_signed = true;
 }
 
-void Form::signForm()
-{
-
-}
 std::ostream & operator<<(std::ostream &cout, const Form &other)
 {
 	cout << other.getName();
 	if (other.getSigned())
-		cout << "can sign";
+		cout << " has been signed";
 	else
-		cout << "can't sign";
- 	cout << "the signed grade is ";
-	 cout << other.getGradeSigned();
-	 cout << "the exec grade is";
-	 cout << other.getGradeExec();
-	return (cout);
+	{
+		cout << " can't be signed";
+		cout << " signed grade is ";
+		cout << other.getGradeSigned();
+		cout << " instead exec grade is ";
+		cout << other.getGradeExec();
+	}
+	 return (cout);
 }
 Form::~Form() {}
