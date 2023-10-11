@@ -1,13 +1,12 @@
 #include "Bureaucrat.hpp"
-
+#include "ShrubberyCreationForm.hpp"
 int	main(void) {
 	try
 	{
-		Bureaucrat Marcello("Marcello", 45);
-		AForm Constitution("Constitution", 45, 1);
-		Constitution.beSigned(Marcello);
-		Marcello.signForm(Constitution);
-		std::cout << Constitution << std::endl;
+		Bureaucrat Marcello("Marcello", 137);
+		ShrubberyCreationForm test("Three");
+		test.beSigned(Marcello);
+		test.execute(Marcello);
 	}
 	catch(std::exception &e)
 	{

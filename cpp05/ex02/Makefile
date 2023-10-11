@@ -4,6 +4,7 @@ CXXFLAGS = -std=c++98 -Wall -Wextra -Werror #-fsanitize=address
 SRC = main.cpp \
 		Bureaucrat.cpp \
 		Form.cpp \
+			ShrubberyCreationForm.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

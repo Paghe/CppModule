@@ -1,7 +1,8 @@
 #include "Form.hpp"
 
-AForm::AForm(std::string const &name, const int gradeSigned, const int gradeExec) :
+AForm::AForm(std::string const &name, const std::string &target, const int gradeSigned, const int gradeExec) :
 	_name(name),
+	_target(target),
 	_signed(false),
 	_gradeSigned(gradeSigned),
 	_gradeExec(gradeExec)
@@ -14,6 +15,7 @@ AForm::AForm(std::string const &name, const int gradeSigned, const int gradeExec
 
 AForm::AForm(const AForm & set) :
 _name(set._name),
+_target(set._target),
 _signed(set._signed),
 _gradeSigned(set._gradeSigned),
 _gradeExec(set._gradeExec)
@@ -45,6 +47,11 @@ int AForm::getGradeSigned() const
 std::string AForm::getName() const
 {
 	return (this->_name);
+}
+
+std::string AForm::getTarget() const
+{
+	return (this->_target);
 }
 
 void	AForm::beSigned(const Bureaucrat &other)

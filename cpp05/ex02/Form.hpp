@@ -8,6 +8,7 @@ class AForm
 {
 private:
 	std::string const _name;
+	std::string const _target;
 	bool _signed;
 	const int _gradeSigned;
 	const int _gradeExec;
@@ -16,9 +17,10 @@ public:
 	bool	getSigned() const;
 	int 	getGradeSigned() const;
 	int 	getGradeExec() const;
+	std::string	getTarget() const;
 	void	beSigned(const Bureaucrat &other);
 	virtual void execute(Bureaucrat const & executor) const = 0;
-	AForm(std::string const &name, const int gradeSigned, const int gradeExec);
+	AForm(std::string const &name, std::string const & _taget, const int gradeSigned, const int gradeExec);
 	AForm(const AForm & set);
 	AForm& operator=(AForm const & copy);
 	virtual ~AForm();
