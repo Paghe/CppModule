@@ -10,4 +10,15 @@ ScalarConverter::ScalarConverter(std::string &input)
 {
 	_input = input;
 }
+ScalarConverter::ScalarConverter(const ScalarConverter &set)
+{
+	this->_input = set._input;
+}
+
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &cpy)
+{
+	this->_input = cpy._input;
+	return (*this);
+}
+
 
