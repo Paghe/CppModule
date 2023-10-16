@@ -21,4 +21,30 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &cpy)
 	return (*this);
 }
 
+int ScalarConverter::getInteger()
+{
+	return (_integer);
+}
+
+double 		ScalarConverter::getDouble()
+{
+	return (_double);
+}
+
+float 		ScalarConverter::getFloat()
+{
+	return (_float);
+}
+
+char	ScalarConverter::getChar()
+{
+	return (_char);
+}
+
+std::string ScalarConverter::getInput()
+{
+	return (_input);
+}
+ScalarConverter::~ScalarConverter() {}
+
 
