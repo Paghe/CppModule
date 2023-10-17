@@ -76,6 +76,7 @@ static bool isFloat(const std::string &input)
 	int 		dotCount;
 
 	dotCount = 0;
+	//maybe add a token to check which conversion bc double and float are similar
 	if (input.length() > 0 && input[input.length() - 1 ] == 'f')
 	{
 		validFormat = input.substr(0, input.length() - 1);
