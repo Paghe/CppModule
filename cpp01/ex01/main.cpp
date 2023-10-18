@@ -12,15 +12,17 @@
 
 #include "Zombie.hpp"
 
-Zombie* zombieHorde( int N, std::string name );
-
 int main(void)
 {
     Zombie* Horde;
 
     Horde = zombieHorde(8, "horde");
-    for (int i = 0; i < 8; i++)
-        Horde->announce();
+	std::cout << "This is idx 0 ";
+	Horde[0].announce();
+	std::cout << "This is idx 7 ";
+	Horde[7].announce();
+	std::cout << "This is out of range -> ";
+	Horde[8].announce();
     delete[] Horde;
     return (0);
 }

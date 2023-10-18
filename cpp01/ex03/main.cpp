@@ -14,8 +14,14 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
+void leaks(void)
+{
+	system("leaks Weapon");
+}
+
 int	main(void)
 {
+//	atexit(leaks);
 	{
 		Weapon club = Weapon("crude spiked club");
 		HumanA bob("Bob", club);

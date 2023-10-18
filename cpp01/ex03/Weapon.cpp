@@ -12,10 +12,7 @@
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string type)
-{
-	this->_type = type;
-}
+Weapon::Weapon(std::string type) : _type(type) {}
 
 Weapon::~Weapon(void) {}
 
@@ -26,5 +23,8 @@ std::string const& Weapon::getType(void)
 
 void	Weapon::setType(std::string type)
 {
-	this->_type = type;
+	if (this->_type.empty())
+		std::cout <<"Please provide a type!" << std::endl;
+	else
+		this->_type = type;
 }

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = weapon
+NAME = Weapon
 CXX = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror #-fsanitize=address 
 SRC = main.cpp \

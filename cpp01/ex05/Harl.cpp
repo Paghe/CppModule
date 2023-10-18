@@ -23,24 +23,19 @@ void Harl::error(void)
     std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
+typedef void (Harl::*FunctionArray)(void);
+
 void Harl::complain(std::string level)
 {
-    int i;
-    std::string functioName[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    i = 0;
-    void (Harl::*search [])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-    while(search[i])
+	std::string match_array[COMMAND_ARRAY] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	FunctionArray functionName[COMMAND_ARRAY] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+    for (int i = 0; i < COMMAND_ARRAY; i++)
     {
-        if (level == functioName[i])
+        if (level == match_array[i])
         {
-            (this->*search[i])();
-            break ;
-        }
-        i++;
-        if (i > 4)
-        {
-            std::cout << "command not found" << std::endl;
-            break ;
+			(this->*functionName[i])();
+            return ;
         }
     }
+	std::cout << "command not found" << std::endl;
 }

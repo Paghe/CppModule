@@ -12,16 +12,13 @@
 
 #include "Zombie.hpp"
 
-void    randomChump(std::string name);
-Zombie* newZombie(std::string name);
-
 int main(void)
 {
-    Zombie* Marco;
+    Zombie* Mark;
 
-    Marco = newZombie("MARCO");
-    Marco->announce();
-    randomChump("Dump");
-    delete Marco;
+    Mark = newZombie("Mark");
+    Mark->announce();
+    randomChump("Carl");
+    delete Mark;
     return (0);
 }

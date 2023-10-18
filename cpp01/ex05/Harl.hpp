@@ -4,6 +4,7 @@
 # include <iostream>
 # include <string>
 
+#define COMMAND_ARRAY 4
 class Harl
 {
     private:

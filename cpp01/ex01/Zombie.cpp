@@ -12,22 +12,28 @@
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(std::string getName) : name(getName) {}
+Zombie::Zombie(std::string name) : _name(name) {}
 
 Zombie::Zombie(void) {}
+
 void    Zombie::announce(void)
 {
-    std::cout  << this->name
-                << " BraiiiiiiinnnzzzZ..." << std::endl;
+    if (this->_name.empty())
+		std::cout << "Invalid format" << std::endl;
+	else
+	{
+		std::cout  << this->_name
+				   << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	}
 }
 
 void Zombie::setName(std::string name)
 {
-    this->name = name;
+    this->_name = name;
 }
 
 Zombie::~Zombie(void)
 {
-    std::cout << this->name
-                << " destoyed" << std::endl;
+    std::cout << this->_name
+                << ": destoyed" << std::endl;
 }
