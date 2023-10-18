@@ -59,12 +59,20 @@ static int countDot(const std::string &format)
 		if (!isdigit(format[i]))
 		{
 			if (format[i] == '.' && !isdigit(format[i + 1]))
+			{
+				std::cerr << ERROR_COLOR << "Invalid format \"" << format[i] <<"\" is not allowed"<<
+																			RESET_TEXT << std::endl;
 				return (false);
+			}
 			else if (format[i] == '.')
 				dotCount++;
 		}
 		if (dotCount > 1)
+		{
+			std::cerr << ERROR_COLOR << "Please provide only one \"" << format[i] <<"\""
+																	<< RESET_TEXT << std::endl;
 			return (false);
+		}
 	}
 	return (dotCount);
 }
@@ -76,16 +84,23 @@ static bool isFloat(const std::string &input)
 	int 		dotCount;
 
 	dotCount = 0;
-	//maybe add a token to check which conversion bc double and float are similar
-	if (input.length() > 0 && input[input.length() - 1 ] == 'f')
-	{
+	if (input.length() > 0 && input[input.length() - 1 ] == 'f') {
 		validFormat = input.substr(0, input.length() - 1);
 		dotCount = countDot(validFormat);
 		strtof(validFormat.c_str(), &endptr);
 		if (dotCount == 1)
 			return (*endptr == '\0');
 	}
-	else if (input.length() > 0)
+	return (false);
+}
+
+static bool isDouble(const std::string &input)
+{
+	char 		*endptr;
+	int 		dotCount;
+
+	dotCount = 0;
+	if (input.length() > 0)
 	{
 		strtof(input.c_str(), &endptr);
 		dotCount = countDot(input);
@@ -95,12 +110,24 @@ static bool isFloat(const std::string &input)
 	return (false);
 }
 
+static bool isInt(const std::string &input)
+{
+	for(size_t i = 0; i < input.length(); i++)
+		if (!isdigit(input[i]))
+			return (false);
+	return (true);
+}
+
 void ScalarConverter::convert(std::string &input)
 {
-	if (!isFloat(input))
-		std::cout << "Is not a float" << std::endl;
+	if (isFloat(input))
+		convertFloat(input);
+	else if (isDouble(input))
+		convertDouble(input);
+	else if (isInt(input))
+		convertInt(input);
 	else
-		std::cout <<"Is a float" << std::endl;
+		std::cout <<"Is a char" << std::endl;
 }
 
 ScalarConverter::~ScalarConverter() {}

@@ -3,6 +3,7 @@ CXX = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror #-fsanitize=address
 SRC = main.cpp \
 		Convert.cpp \
+		utils.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
