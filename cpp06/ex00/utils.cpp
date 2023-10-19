@@ -57,6 +57,8 @@ void	printDouble(const void* format, std::string token)
 	printChar(format, token);
 }
 
+
+// READ THIS FUNCTION NEED SOME CHANGES!
 void printOneDecimal(const void* format, std::string token) // probably change name function
 {
 	std::string const matchArray[FORMAT_ARRAY] = {"float", "double", "char"};
@@ -85,6 +87,7 @@ void convertInt(std::string const &input)
 	int check = strtol(input.c_str(), &endptr, 10);
 	std::cout << check << std::endl;
 	printChar(&check, "int");
+	printChar(&check, "double");
 }
 
 void convertFloat(std::string const &input)
