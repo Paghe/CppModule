@@ -7,7 +7,7 @@
 
 const char* const ERROR_COLOR = "\033[1;31m";
 const char* const RESET_TEXT = "\033[0m";
-#define FORMAT_ARRAY 2
+#define FORMAT_ARRAY 3
 
 class ScalarConverter
 {
