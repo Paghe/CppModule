@@ -8,21 +8,21 @@ void	castDoubleAscii(const void* format)
 {
 	const double value = *static_cast<const double*>(format);
    	char ascii = static_cast<char>(value);
-	std::cout << "Problem -> " << ascii << std::endl;
+	std::cout << "Char: " << ascii << std::endl;
 }
 
 void	castFloatAscii(const void* format)
 {
 	const float value = *static_cast<const float*>(format);
 	char ascii = static_cast<char>(value);
-	std::cout << ascii << std::endl;
+	std::cout << "Char: " << ascii << std::endl;
 }
 
 void	castIntAscii(const void* format)
 {
 	const int value = *static_cast<const int*>(format);
 	char ascii = static_cast<char>(value);
-	std::cout << ascii << std::endl;
+	std::cout << "Char: " << ascii << std::endl;
 }
 
 void	printChar(const void* format, std::string token)
@@ -41,25 +41,25 @@ void	printChar(const void* format, std::string token)
 
 void	printFloat(const void* format, std::string token)
 {
+	printChar(format, token);
 	std::stringstream stream;
 	float value = *static_cast<const float*>(format);
-	stream << std::fixed << std::setprecision(1) << value << "f";
+	stream << std::fixed << std::setprecision(1) <<"Float: " << value << "f";
 	std::cout << stream.str() << std::endl;
-	printChar(format, token);
 }
 
 void	printDouble(const void* format, std::string token)
 {
 	std::stringstream stream;
 	double value = *static_cast<const double*>(format); // change the type bc is not working from double to float -> <const float>
-	stream << std::fixed << std::setprecision(1) << value;
+	stream << std::fixed << std::setprecision(1) <<"Double: " <<value;
 	std::cout << stream.str() << std::endl;
 	printChar(format, token);
 }
 
 
 // READ THIS FUNCTION NEED SOME CHANGES!
-void printOneDecimal(const void* format, std::string token) // probably change name function
+void printDigit(const void* format, std::string token)
 {
 	std::string const matchArray[FORMAT_ARRAY] = {"float", "double", "char"};
 	FunctionArray formatArray[FORMAT_ARRAY] = {&printFloat, &printDouble, &printChar};
@@ -85,9 +85,9 @@ void convertInt(std::string const &input)
 {
 	char* endptr;
 	int check = strtol(input.c_str(), &endptr, 10);
-	std::cout << check << std::endl;
 	printChar(&check, "int");
-	printChar(&check, "double");
+	std::cout <<"Int: " << check << std::endl;
+	intConvertToFloatAndDouble(check);
 }
 
 void convertFloat(std::string const &input)
@@ -97,13 +97,14 @@ void convertFloat(std::string const &input)
 
 	validFormat = input.substr(0, input.length() - 1);
 	float check = strtof(validFormat.c_str(), &endptr);
-	printOneDecimal(&check, "float");
-	printOneDecimal(&check, "double");
+	printDigit(&check, "float");
+	FloatConvertToDoubleAndInt(check);
 }
 
 void convertDouble(std::string const &input)
 {
 	char* endptr;
 	double check = strtod(input.c_str(), &endptr);
-	printOneDecimal(&check, "double");
+	printDigit(&check, "double");
+	doubleConvertToFloatAndInt(check);
 }
