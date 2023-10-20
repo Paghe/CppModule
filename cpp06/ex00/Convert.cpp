@@ -54,7 +54,7 @@ static int countDot(const std::string &format)
 
 	for (size_t i = 0; i < format.length(); i++)
 	{
-		if (!isdigit(format[0]))
+		if (!isdigit(format[0]) && (format[0] != '-' && format[0] != '+'))
 			return (false);
 		if (!isdigit(format[i]))
 		{

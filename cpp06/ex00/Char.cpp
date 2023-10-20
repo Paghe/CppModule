@@ -24,6 +24,11 @@ void fromCharToDouble(char format)
 
 void CharConvertToFloatAndInt(char format)
 {
+	if (!isprint(format))
+	{
+		std::cout << "Char: Non displayable"<< std::endl;
+		return ;
+	}
 	std::cout << "Char: " << format << std::endl;
 	fromCharToInt(format);
 	fromCharToDouble(format);

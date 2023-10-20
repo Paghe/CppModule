@@ -27,6 +27,11 @@ void	castIntAscii(const void* format)
 
 void	printChar(const void* format, std::string token)
 {
+	if (!isprint(*static_cast<const int*>(format)))
+	{
+		std::cout << "Char: Non displayable"<< std::endl;
+		return ;
+	}
 	CastArray printCast[3] = {&castDoubleAscii, &castFloatAscii, &castIntAscii};
 	std::string castMatch[3] = {"double", "float", "int"};
 	for (int i = 0; i < 3; i++)
@@ -112,8 +117,11 @@ void convertDouble(std::string const &input)
 void	convertChar(std::string const &input)
 {
 	if (input.length() < 0 || input.length() > 1)
+	{
 		std::cout << ERROR_COLOR << "Provide only one char"
-								<< RESET_TEXT << std::endl;
+				  << RESET_TEXT << std::endl;
+		return ;
+	}
 	char check = input[0];
 	CharConvertToFloatAndInt(check);
 }
