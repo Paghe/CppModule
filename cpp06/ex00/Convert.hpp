@@ -31,9 +31,11 @@ public:
 
 };
 
-void convertInt(std::string const &input);
-void convertFloat(std::string const &input);
-void convertDouble(std::string const &input);
-void doubleConvertToFloatAndInt(double format);
-void FloatConvertToDoubleAndInt(float format);
-void intConvertToFloatAndDouble(int format);
+void 	convertInt(std::string const &input);
+void 	convertFloat(std::string const &input);
+void	convertDouble(std::string const &input);
+void	convertChar(std::string const &input);
+void	doubleConvertToFloatAndInt(double format);
+void	FloatConvertToDoubleAndInt(float format);
+void	intConvertToFloatAndDouble(int format);
+void 	CharConvertToFloatAndInt(char format);

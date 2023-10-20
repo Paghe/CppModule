@@ -7,6 +7,7 @@ SRC = main.cpp \
 		Double.cpp \
 		Float.cpp \
 		Int.cpp \
+		Char.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

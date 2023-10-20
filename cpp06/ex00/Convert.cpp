@@ -127,7 +127,7 @@ void ScalarConverter::convert(std::string &input)
 	else if (isInt(input))
 		convertInt(input);
 	else
-		std::cout <<"Is a char" << std::endl;
+		convertChar(input);
 }
 
 ScalarConverter::~ScalarConverter() {}

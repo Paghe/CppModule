@@ -108,3 +108,12 @@ void convertDouble(std::string const &input)
 	printDigit(&check, "double");
 	doubleConvertToFloatAndInt(check);
 }
+
+void	convertChar(std::string const &input)
+{
+	if (input.length() < 0 || input.length() > 1)
+		std::cout << ERROR_COLOR << "Provide only one char"
+								<< RESET_TEXT << std::endl;
+	char check = input[0];
+	CharConvertToFloatAndInt(check);
+}
