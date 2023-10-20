@@ -6,6 +6,7 @@ int main(int argc, char **argv)
 	{
 		std::cerr << ERROR_COLOR << "Argument " << argc << " expected 2"
 				  << RESET_TEXT << std::endl;
+		return (1);
 	}
 	else
 	{
