@@ -18,17 +18,17 @@ void fromCharToDouble(char format)
 {
 	std::stringstream stream;
 	double value = static_cast<const double>(format);
-	stream << std::fixed << std::setprecision(1) <<"Dobule: " << value;
+	stream << std::fixed << std::setprecision(1) <<"Double: " << value;
 	std::cout << stream.str() << std::endl;
 }
 
 void CharConvertToFloatAndInt(char format)
 {
-	if (!isprint(format))
+/*	if (!isprint(format))
 	{
 		std::cout << "Char: Non displayable"<< std::endl;
 		return ;
-	}
+	}*/
 	std::cout << "Char: " << format << std::endl;
 	fromCharToInt(format);
 	fromCharToDouble(format);

@@ -88,6 +88,8 @@ static bool isFloat(const std::string &input)
 		validFormat = input.substr(0, input.length() - 1);
 		dotCount = countDot(validFormat);
 		strtof(validFormat.c_str(), &endptr);
+		/*if (!dotCount)
+			exit(1);*/
 		if (dotCount == 1)
 			return (*endptr == '\0');
 	}
