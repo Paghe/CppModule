@@ -84,12 +84,11 @@ static bool isFloat(const std::string &input)
 	int 		dotCount;
 
 	dotCount = 0;
-	if (input.length() > 0 && input[input.length() - 1 ] == 'f') {
+	if (input.length() > 0 && input[input.length() - 1 ] == 'f')
+	{
 		validFormat = input.substr(0, input.length() - 1);
 		dotCount = countDot(validFormat);
 		strtof(validFormat.c_str(), &endptr);
-		/*if (!dotCount)
-			exit(1);*/
 		if (dotCount == 1)
 			return (*endptr == '\0');
 	}
@@ -115,19 +114,32 @@ static bool isDouble(const std::string &input)
 static bool isInt(const std::string &input)
 {
 	for(size_t i = 0; i < input.length(); i++)
+	{
+		if (input[0] == '+' || input[0] == '-')
+			i++;
 		if (!isdigit(input[i]))
 			return (false);
+	}
 	return (true);
 }
 
 void ScalarConverter::convert(std::string &input)
 {
 	if (isFloat(input))
-		convertFloat(input);
+	{
+		if (!convertFloat(input))
+			return ;
+	}
 	else if (isDouble(input))
-		convertDouble(input);
+	{
+		if (!convertDouble(input))
+			return ;
+	}
 	else if (isInt(input))
-		convertInt(input);
+	{
+		if (!convertInt(input))
+			return ;
+	}
 	else
 		convertChar(input);
 }

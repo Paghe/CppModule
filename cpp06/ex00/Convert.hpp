@@ -26,14 +26,15 @@ public:
 	static float 		getFloat();
 	static char 		getChar();
 	static std::string	getInput();
+	bool				checkInputErrors();
 	~ScalarConverter();
 	static	void	convert(std::string &input);
 
 };
 
-void 	convertInt(std::string const &input);
-void 	convertFloat(std::string const &input);
-void	convertDouble(std::string const &input);
+bool 	convertInt(std::string const &input);
+bool 	convertFloat(std::string const &input);
+bool	convertDouble(std::string const &input);
 void	convertChar(std::string const &input);
 void	doubleConvertToFloatAndInt(double format);
 void	FloatConvertToDoubleAndInt(float format);

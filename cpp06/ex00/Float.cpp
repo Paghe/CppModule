@@ -16,6 +16,11 @@ void fromFloatToDouble(float format)
 
 void FloatConvertToDoubleAndInt(float format)
 {
+	if (format <= -2147483648.0 ||  format >= 2147483647.0)
+	{
+		std::cout << ERROR_COLOR << "Out of range" << RESET_TEXT << std::endl;
+		return ;
+	}
 	fromFloatToInt(format);
 	fromFloatToDouble(format);
 }

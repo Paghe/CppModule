@@ -59,6 +59,11 @@ void	printFloat(const void* format, std::string token)
 	printChar(format, token);
 	std::stringstream stream;
 	float value = *static_cast<const float*>(format);
+	if (value <= -2147483648.0 ||  value >= 2147483647.0)
+	{
+		std::cout << ERROR_COLOR << "Out of range" << RESET_TEXT << std::endl;
+		return ;
+	}
 	stream << std::fixed << std::setprecision(1) <<"Float: " << value << "f";
 	std::cout << stream.str() << std::endl;
 }
@@ -96,32 +101,50 @@ void printDigit(const void* format, std::string token)
 			  << RESET_TEXT << std::endl;
 }
 
-void convertInt(std::string const &input)
+bool convertInt(std::string const &input)
 {
 	char* endptr;
-	int check = strtol(input.c_str(), &endptr, 10);
+	long long check = strtol(input.c_str(), &endptr, 10);
+	if (check <= -2147483648 || check >= 2147483647)
+	{
+		std::cout << ERROR_COLOR << "Out of range" << RESET_TEXT << std::endl;
+		return (false);
+	}
 	printChar(&check, "int");
 	std::cout <<"Int: " << check << std::endl;
 	intConvertToFloatAndDouble(check);
+	return (true);
 }
 
-void convertFloat(std::string const &input)
+bool convertFloat(std::string const &input)
 {
 	char* endptr;
 	std::string validFormat;
 
 	validFormat = input.substr(0, input.length() - 1);
 	float check = strtof(validFormat.c_str(), &endptr);
+	if (check <= -2147483648.0 ||  check >= 2147483647.0)
+	{
+		std::cout << ERROR_COLOR << "Out of range" << RESET_TEXT << std::endl;
+		return (false);
+	}
 	printDigit(&check, "float");
 	FloatConvertToDoubleAndInt(check);
+	return (true);
 }
 
-void convertDouble(std::string const &input)
+bool convertDouble(std::string const &input)
 {
 	char* endptr;
 	double check = strtod(input.c_str(), &endptr);
+	if (check <= -2147483648.0 ||  check >= 2147483647.0)
+	{
+		std::cout << ERROR_COLOR << "Out of range" << RESET_TEXT << std::endl;
+		return (false);
+	}
 	printDigit(&check, "double");
 	doubleConvertToFloatAndInt(check);
+	return (true);
 }
 
 void	convertChar(std::string const &input)

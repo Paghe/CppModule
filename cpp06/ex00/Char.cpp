@@ -1,5 +1,50 @@
 #include "Convert.hpp"
 
+bool	ScalarConverter::checkInputErrors()
+{
+	if (ScalarConverter::_input == "nan")
+	{
+		std::cout << "Char: impossible" << std::endl
+				<< "Int: impossible" << std::endl
+				<< "float: nanf" <<std::endl
+				<< "double: nan" << std::endl;
+		return (false);
+	}
+	else if (ScalarConverter::_input == "+inf")
+	{
+		std::cout << "Char: impossible" << std::endl
+				  << "Int: impossible" << std::endl
+				  << "float: +inff" <<std::endl
+				  << "double: +inf" << std::endl;
+		return (false);
+	}
+	else if (ScalarConverter::_input == "+inff")
+	{
+		std::cout << "Char: impossible" << std::endl
+				  << "Int: impossible" << std::endl
+				  << "float: +inff" <<std::endl
+				  << "double: +inf" << std::endl;
+		return (false);
+	}
+	else if (ScalarConverter::_input == "-inf")
+	{
+		std::cout << "Char: impossible" << std::endl
+				  << "Int: impossible" << std::endl
+				  << "float: -inff" <<std::endl
+				  << "double: -inf" << std::endl;
+		return (false);
+	}
+	else if (ScalarConverter::_input == "-inff")
+	{
+		std::cout << "Char: impossible" << std::endl
+				  << "Int: impossible" << std::endl
+				  << "float: +inff" <<std::endl
+				  << "double: -inf" << std::endl;
+		return (false);
+	}
+	return (true);
+}
+
 void fromCharToInt(char format)
 {
 	int num = static_cast<int>(format);
@@ -24,11 +69,6 @@ void fromCharToDouble(char format)
 
 void CharConvertToFloatAndInt(char format)
 {
-/*	if (!isprint(format))
-	{
-		std::cout << "Char: Non displayable"<< std::endl;
-		return ;
-	}*/
 	std::cout << "Char: " << format << std::endl;
 	fromCharToInt(format);
 	fromCharToDouble(format);
