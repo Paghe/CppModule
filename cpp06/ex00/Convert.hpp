@@ -27,8 +27,8 @@ public:
 	static char 		getChar();
 	static std::string	getInput();
 	bool				checkInputErrors();
-	~ScalarConverter();
 	static	void	convert(std::string &input);
+	~ScalarConverter();
 
 };
 

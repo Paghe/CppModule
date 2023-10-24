@@ -32,7 +32,7 @@ void	castIntAscii(const void* format)
 {
 	if (!isprint(*static_cast<const int*>(format)))
 	{
-		std::cout << "Char: Non displayable"<< std::endl; // u have to change it
+		std::cout << "Char: Non displayable"<< std::endl;
 		return ;
 	}
 	const int value = *static_cast<const int*>(format);
@@ -42,9 +42,9 @@ void	castIntAscii(const void* format)
 
 void	printChar(const void* format, std::string token)
 {
-	CastArray printCast[3] = {&castDoubleAscii, &castFloatAscii, &castIntAscii};
-	std::string castMatch[3] = {"double", "float", "int"};
-	for (int i = 0; i < 3; i++)
+	CastArray printCast[FORMAT_ARRAY] = {&castDoubleAscii, &castFloatAscii, &castIntAscii};
+	std::string castMatch[FORMAT_ARRAY] = {"double", "float", "int"};
+	for (int i = 0; i < FORMAT_ARRAY; i++)
 	{
 		if (castMatch[i] == token)
 		{
@@ -59,7 +59,7 @@ void	printFloat(const void* format, std::string token)
 	printChar(format, token);
 	std::stringstream stream;
 	float value = *static_cast<const float*>(format);
-	if (value <= -2147483648.0 ||  value >= 2147483647.0)
+	if (value <= -2147483648.0f ||  value >= 2147483647.0f)
 	{
 		std::cout << ERROR_COLOR << "Out of range" << RESET_TEXT << std::endl;
 		return ;
@@ -78,7 +78,6 @@ void	printDouble(const void* format, std::string token)
 }
 
 
-// READ THIS FUNCTION NEED SOME CHANGES!
 void printDigit(const void* format, std::string token)
 {
 	std::string const matchArray[FORMAT_ARRAY] = {"float", "double", "char"};
