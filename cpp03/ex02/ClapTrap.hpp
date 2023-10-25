@@ -8,11 +8,11 @@ class ClapTrap
 {
 protected:
     std::string _name;
-    int   _hitpoint;
+    int   _hitPoint;
     int   _energyPoints;
     int   _attackDamage;
 public:
-    ClapTrap(std::string nick, int life, int mana, int dps);
+    ClapTrap(std::string nick);
     ClapTrap(ClapTrap const & preset);
     ~ClapTrap();
     ClapTrap& operator=(ClapTrap const & copy);

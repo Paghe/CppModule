@@ -1,6 +1,6 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string nick, int life, int mana, int dps) : ClapTrap(nick, life, mana, dps)
+ScavTrap::ScavTrap(std::string nick) : ClapTrap(nick)
 {
     std::cout << "ScavTrap Constructor called" << std::endl;
 }

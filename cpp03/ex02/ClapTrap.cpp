@@ -1,7 +1,6 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string nick, int life, int mana, int dps) : _name(nick), _hitpoint(life),
-                                                                    _energyPoints(mana), _attackDamage(dps)
+ClapTrap::ClapTrap(std::string nick) : _name(nick)
 {
     std::cout << "Constructor called" << std::endl;
 }
@@ -11,7 +10,7 @@ ClapTrap::ClapTrap(ClapTrap const & preset)
     std::cout << "Copy Constructor called" << std::endl;
     this->_name = preset.getName();
     this->_attackDamage = preset.getDps();
-    this->_hitpoint = preset.getLife();
+    this->_hitPoint = preset.getLife();
     this->_energyPoints = preset.getMana();
 }
 
@@ -32,14 +31,14 @@ int ClapTrap::getDps(void) const
 
 int ClapTrap::getLife(void) const
 {
-    return (this->_hitpoint);
+    return (this->_hitPoint);
 }
 
 ClapTrap& ClapTrap::operator=(ClapTrap const & copy)
 {
     this->_name = copy.getName();
     this->_attackDamage = copy.getDps();
-    this->_hitpoint = copy.getLife();
+    this->_hitPoint = copy.getLife();
     this->_energyPoints = copy.getMana();
     return (*this);
 }
@@ -75,7 +74,7 @@ void ClapTrap::beRepaired(unsigned int amount)
         std::cout << "ClapTrap " << this->_name << " repairs " << amount
                   << " life points!" << std::endl;
         this->_energyPoints--;
-        this->_hitpoint += amount;
+        this->_hitPoint += amount;
     }
     else
         std::cout << "OUT OF MANA! 💧" << std::endl;
@@ -85,8 +84,8 @@ void ClapTrap::takeDamage(unsigned int amount)
 {
     std::cout << "ClapTrap " << this->_name << " has taken " << amount
               << " damage!" << std::endl;
-    this->_hitpoint -= amount;
-    if (this->_hitpoint <= 0)
+    this->_hitPoint -= amount;
+    if (this->_hitPoint <= 0)
         std::cout << this->_name << "✝︎ is dead ✝︎" << std::endl;
 }
 

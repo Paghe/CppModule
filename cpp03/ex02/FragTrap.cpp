@@ -1,6 +1,6 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string nick, int life, int mana, int dps) : ClapTrap(nick, life, mana, dps)
+FragTrap::FragTrap(std::string nick) : ClapTrap(nick)
 {
     std::cout << "FragTrap built" << std::endl;
 }
