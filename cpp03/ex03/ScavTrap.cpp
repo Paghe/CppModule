@@ -2,10 +2,18 @@
 
 ScavTrap::ScavTrap(std::string nick) : ClapTrap(nick)
 {
-    this->_hitpoint = 100;
+    this->_hitPoint = 100;
     this->_energyPoints = 50;
     this->_attackDamage = 20;
     std::cout << "ScavTrap Constructor called" << std::endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap &preset) : ClapTrap(preset){}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap &cpy)
+{
+	ClapTrap::operator=(cpy);
+	return (*this);
 }
 
 void    ScavTrap::attack(const std::string& target)
