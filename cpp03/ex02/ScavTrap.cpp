@@ -5,6 +5,14 @@ ScavTrap::ScavTrap(std::string nick) : ClapTrap(nick)
     std::cout << "ScavTrap Constructor called" << std::endl;
 }
 
+ScavTrap::ScavTrap(const ScavTrap &preset) : ClapTrap(preset){}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap &cpy)
+{
+	ClapTrap::operator=(cpy);
+	return (*this);
+}
+
 void    ScavTrap::attack(const std::string& target)
 {
     if (this->_energyPoints > 0)
