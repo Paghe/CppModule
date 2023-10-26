@@ -14,6 +14,21 @@ void DiamondTrap::attack(const std::string& target)
     ScavTrap::attack(target);
 }
 
+DiamondTrap::DiamondTrap(DiamondTrap const & cpy) :
+	ClapTrap(cpy._name +  "_clap_name"),  ScavTrap(cpy._name), FragTrap(cpy._name), _name(cpy._name)
+{
+	this->_energyPoints = cpy.getMana();
+	this->_hitPoint = cpy.getLife();
+	this->_attackDamage = cpy.getDps();
+}
+
+DiamondTrap& DiamondTrap::operator=(DiamondTrap const &cpy)
+{
+	if (this != &cpy)
+		*this = cpy;
+	return (*this);
+}
+
 void DiamondTrap::whoAMi()
 {
     std::cout << "I am " << this->_name << " and " << ClapTrap::_name << std::endl;
