@@ -18,7 +18,7 @@ WrongAnimal::WrongAnimal(WrongAnimal const & set)
 
 WrongAnimal& WrongAnimal::operator=(WrongAnimal const & set)
 {
-    this->_type = set._type;
+    this->_type = set.getType();
     return (*this);
 }
 

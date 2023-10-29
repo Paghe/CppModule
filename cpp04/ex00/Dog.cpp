@@ -7,6 +7,17 @@ Dog::Dog() : Animal()
     std::cout << "Dog constructor with default type called" << std::endl;
 }
 
+Dog::Dog(const Dog &preset) : Animal(preset)
+{
+	this->_type= preset._type;
+}
+
+Dog& Dog::operator=(Dog const & cpy)
+{
+	Animal::operator=(cpy);
+	return (*this);
+}
+
 Dog::Dog(std::string type) : Animal(type)
 {
     std::cout << "Dog constructor built" << std::endl;

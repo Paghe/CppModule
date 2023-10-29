@@ -12,6 +12,16 @@ WrongCat::WrongCat(std::string type) : WrongAnimal(type)
     std::cout << "WrongCat constructor built" << std::endl;
     this->_type = type;
 }
+WrongCat::WrongCat(const WrongCat & preset) : WrongAnimal(preset)
+{
+	this->_type = preset.getType();
+}
+
+WrongCat& WrongCat::operator=(WrongCat const &cpy)
+{
+	WrongAnimal::operator=(cpy);
+	return (*this);
+}
 
 void    WrongCat::makeSound() const
 {
