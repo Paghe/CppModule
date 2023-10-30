@@ -39,6 +39,7 @@ std::string	Cat::getIdeaByCat(int idx)
     }
     return (*this);
 }
+
 Cat::Cat(std::string type) : Animal(type)
 {
     std::cout << "Cat constructor built" << std::endl;

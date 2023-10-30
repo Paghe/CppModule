@@ -19,6 +19,22 @@ Cat& Cat::operator=(Cat const & set)
     }
     return (*this);
 }
+
+void	Cat::setIdeaByCat(std::string idea, int idx)
+{
+	if (idx > 99 || idx < 0)
+	{
+		std::cout << "Out of bounds" << std::endl;
+		return ;
+	}
+	this->_BrainCat->setIdeas(idea, idx);
+}
+
+std::string	Cat::getIdeaByCat(int idx)
+{
+	return (this->_BrainCat->getIdeas(idx));
+}
+
 Cat::Cat(std::string type) : Animal(type)
 {
     std::cout << "Cat constructor built" << std::endl;

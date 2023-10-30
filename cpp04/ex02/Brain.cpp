@@ -18,6 +18,16 @@ std::string Brain::getIdeas(int i)
         return (std::string());
 }
 
+void	Brain::setIdeas(std::string idea, int idx)
+{
+	if (idx > 99 || idx < 0)
+	{
+		std::cout << "Out of bounds!" << std::endl;
+		return ;
+	}
+	this->_ideas[idx] = idea;
+}
+
 Brain& Brain::operator=(Brain const & set)
 {
     for(int i = 0 ; i < 100 ; i++)

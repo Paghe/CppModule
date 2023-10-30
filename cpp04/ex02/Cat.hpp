@@ -10,7 +10,9 @@ public:
         Cat(std::string type);
         Cat& operator=(Cat const & set);
         ~Cat();
-        void makeSound(void) const;
+		std::string	getIdeaByCat(int idx);
+		void		setIdeaByCat(std::string idea, int idx);
+        void		makeSound(void) const;
 private:
     Brain* _BrainCat;
 };

@@ -8,10 +8,31 @@ Dog::Dog() : Animal()
     std::cout << "Dog constructor with default type called" << std::endl;
 }
 
+Dog::Dog(const Dog & preset) : Animal()
+{
+	this->_BrainDog = new Brain(*(preset._BrainDog));
+	this->_type = preset.getType();
+}
+
 Dog::Dog(std::string type) : Animal(type)
 {
     std::cout << "Dog constructor built" << std::endl;
     this->_type = type;
+}
+
+void	Dog::setIdeaByDog(std::string idea, int idx)
+{
+	if (idx > 99 || idx < 0)
+	{
+		std::cout << "Out of bounds" << std::endl;
+		return ;
+	}
+	this->_BrainDog->setIdeas(idea, idx);
+}
+
+std::string	Dog::getIdeByDog(int idx)
+{
+	return (this->_BrainDog->getIdeas(idx));
 }
 
 Dog& Dog::operator=(Dog const & set)
