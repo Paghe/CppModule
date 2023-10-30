@@ -12,9 +12,15 @@ void leaks(void)
 int main(void)
 {
 //    atexit(leaks);
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    delete j;//should not create a leak
-    delete i;
+    const Animal* Doggo = new Dog();
+    const Animal* Cato = new Cat();
+	Dog Dawg("Dawg");
+	Cat Kity("Kity");
+	Doggo->makeSound();
+	Cato->makeSound();
+	Dawg.makeSound();
+	Kity.makeSound();
+    delete Doggo;
+    delete Cato;
     return (0);
 }
