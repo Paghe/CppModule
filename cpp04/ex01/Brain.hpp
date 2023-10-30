@@ -12,6 +12,7 @@ public:
         Brain(Brain const & set);
         Brain& operator=(Brain const & set);
         std::string getIdeas(int i);
+		void	setIdeas(std::string idea, int idx);
         ~Brain();
 };
 

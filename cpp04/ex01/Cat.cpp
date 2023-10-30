@@ -9,7 +9,27 @@ Cat::Cat() : Animal()
     std::cout << "Cat constructor with default type called" << std::endl;
 }
 
-Cat& Cat::operator=(Cat const & set)
+Cat::Cat(const Cat & preset) : Animal()
+{
+	this->_BrainCat = new Brain(*(preset._BrainCat));
+	this->_type = preset.getType();
+}
+
+void	Cat::setIdeaByCat(std::string idea, int idx)
+{
+	if (idx > 99 || idx < 0)
+	{
+		std::cout << "Out of bounds" << std::endl;
+		return ;
+	}
+	this->_BrainCat->setIdeas(idea, idx);
+}
+
+std::string	Cat::getIdeaByCat(int idx)
+{
+	return (this->_BrainCat->getIdeas(idx));
+}
+	Cat& Cat::operator=(Cat const & set)
 {
     if (this != &set)
     {
