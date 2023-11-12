@@ -1,5 +1,8 @@
 #pragma once
 #include <stdexcept>
+#include <iostream>
+#include <string>
+
 template <typename T>
 class Array
 {
@@ -16,12 +19,12 @@ public:
 			Array(unsigned int n)
 			{
 				this->_arraySize = n;
-				this->_array = new T(_arraySize);
+				this->_array = new T[_arraySize];
 			}
 			Array(const Array & cpy)
 			{
 					this->_arraySize = cpy._arraySize;
-					this->_array = new T(_arraySize);
+					this->_array = new T[_arraySize];
 					for(unsigned int  i = 0; i < _arraySize; i++)
 						_array[i] = cpy._array[i];
 			}
@@ -31,7 +34,7 @@ public:
 				{
 					delete[] this->_arraySize;
 					this->_arraySize = cpy._arraySize;
-					this->_array = new T(this->_arraySize);
+					this->_array = new T[this->_arraySize];
 					for(unsigned int i = 0; i < this->_arraySize; i++)
 						this->_array[i] = cpy._array[i];
 				}
@@ -42,7 +45,7 @@ public:
 			public:
 				virtual const char* what() const throw()
 				{
-					return ("Out of Bounds!")
+					return ("Out of Bounds!");
 				}
 			};
 			T& operator[](unsigned int idx)
@@ -55,5 +58,9 @@ public:
 			{
 				if (this->_arraySize)
 					return(this->_arraySize);
+			}
+			~Array()
+			{
+				delete[] this->_array;
 			}
 };
