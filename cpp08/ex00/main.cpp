@@ -6,7 +6,8 @@ int main(void)
 	{
 		std::list<int>container;
 		container.push_back(2);
-		easyfind(container, 2);
+		container.push_back(5);
+		easyfind(container, 5);
 	}
 	catch(std::exception &e)
 	{
