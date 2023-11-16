@@ -80,7 +80,5 @@ void Span::addRangeIterator(unsigned int size)
 		std::cout << "Size too big" << std::endl;
 	for (unsigned int i = 0; i < size; i++)
 		addNumber(i);
-
-
 }
 Span::~Span() {}

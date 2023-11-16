@@ -39,9 +39,6 @@ class 	GradeTooHighException : public std::exception
 private:
 		std::string const _name;
 		int _grade;
-
-
-
 };
 
 std::ostream & operator<<(std::ostream &cout, const Bureaucrat &other);
