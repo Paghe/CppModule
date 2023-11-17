@@ -23,5 +23,4 @@ int main(void)
 	}
 	std::stack<int> s(mstack);
 	return 0;
-	return(0);
 }

@@ -12,7 +12,7 @@ class MutantStack : public std::stack<T>
 			~MutantStack() {};
 			MutantStack& operator=(MutantStack<T> const &cpy)
 			{
-				if (this != cpy)
+				if (this != cpy) // check with addres
 				{
 					std::stack<T>::operator=(cpy);
 				}
