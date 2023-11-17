@@ -20,7 +20,9 @@ void 	Bitcoin::openFile()
 		std::cerr << "error: impossible to open this file" << std::endl;
 		return;
 	}
-
+	std::string line;
+	getline(inputFile, line);
+	std::cout << line << std::endl;
 }
 
 Bitcoin::~Bitcoin() {}
