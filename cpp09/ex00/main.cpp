@@ -11,5 +11,6 @@ int main(int argc, char **argv)
 	std::string file = argv[1];
 	Bitcoin btc(file);
 	btc.openFile();
+	btc.calcValueMultiplied("test.csv");
 	return (0);
 }

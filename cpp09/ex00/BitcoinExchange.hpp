@@ -15,6 +15,8 @@ public:
 		Bitcoin(const Bitcoin &cpy);
 		Bitcoin& operator=(Bitcoin const & cpy);
 		void	insertElement(std::string key, double value);
-		void openFile(void);
+		void	openFile(void);
+		double getDataValue(std::string key);
+		void	calcValueMultiplied(const std::string valueFile);
 		~Bitcoin();
 };
