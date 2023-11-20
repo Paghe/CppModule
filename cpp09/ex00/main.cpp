@@ -9,8 +9,8 @@ int main(int argc, char **argv)
 		return (0);
 	}
 	std::string file = argv[1];
-	Bitcoin btc(file);
+	Bitcoin btc("data.csv");
 	btc.openFile();
-	btc.calcValueMultiplied("test.csv");
+	btc.calcValueMultiplied(file);
 	return (0);
 }
