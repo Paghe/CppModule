@@ -57,6 +57,20 @@ void 	Bitcoin::openFile()
 	}
 }
 
+int	splitStr(std::string str, char delimiter)
+{
+	std::istringstream split(str);
+	std::string splittedValueFirst, splittedValueSecond, splittedValueThird;
+	while (getline(split, splittedValueFirst, delimiter) &&
+			getline(split, splittedValueSecond, delimiter) &&
+			getline(split, splittedValueThird, delimiter))
+	if (splittedValueSecond[0] >= '4' || (splittedValueSecond[0] == '3' && splittedValueSecond[0] >= '2'))
+		return (-1);
+	else if (splittedValueThird[0] >= '2' || (splittedValueSecond[0] == '1' && splittedValueSecond[0] >= '3'))
+		return (-1);
+	return (0);
+}
+
 void Bitcoin::calcValueMultiplied(const std::string valueFile)
 {
 	std::ifstream inputFile(valueFile);
@@ -83,6 +97,11 @@ void Bitcoin::calcValueMultiplied(const std::string valueFile)
 			else if (value > 1000)
 			{
 				std::cerr << "Error: too large a number\n";
+				continue ;
+			}
+			if (splitStr(date, '-') == -1)
+			{
+				std::cout << "Wrond Date: " << date << std::endl;
 				continue ;
 			}
 			dataValue = getDataValue(date);
