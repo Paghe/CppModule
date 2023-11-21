@@ -16,7 +16,13 @@ Rpn &Rpn::operator=(const Rpn &cpy)
 
 void Rpn::addNode()
 {
-
+	std::istringstream line(this->_input);
+	int value;
+	while  (line >> value)
+	{
+		this->_myStack.push(value);
+		std::cout << this->_myStack.top() << std::endl;
+	}
 }
 
 Rpn::~Rpn() {}
