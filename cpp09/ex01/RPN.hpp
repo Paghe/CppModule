@@ -14,6 +14,11 @@ public:
 	Rpn(std::string input);
 	Rpn(const Rpn & cpy);
 	Rpn& operator=(Rpn const & cpy);
-	void addNode();
+	void	addNode();
+	void	sumOperator();
+	void	subOperator();
+	void	multOperator();
+	void	divOperator();
+	int		calcOperator(std::string token);
 	~Rpn();
 };
