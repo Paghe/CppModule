@@ -10,11 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7714e3e1-6a47-4608-8151-bd48e057e879" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CppModule.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp09/ex02/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex02/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpp09/ex02/PmergeME.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex02/PmergeME.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpp09/ex02/PmergeME.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex02/PmergeME.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cpp09/ex02/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex02/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -207,6 +205,8 @@
       <workItem from="1700652515338" duration="3339000" />
       <workItem from="1700657593590" duration="4093000" />
       <workItem from="1700739427372" duration="5339000" />
+      <workItem from="1700750497123" duration="1556000" />
+      <workItem from="1700821597896" duration="5705000" />
     </task>
     <servers />
   </component>

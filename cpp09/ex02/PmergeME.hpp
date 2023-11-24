@@ -8,11 +8,13 @@
 class MergeMe
 {
 	private:
-			std::vector<int> _mainArray;
+			std::vector<std::pair<int, int> > _mainArray;
 			std::string	_input;
 	public:
 			MergeMe(std::string input);
 			MergeMe(const MergeMe & cpy);
 			MergeMe& operator=(MergeMe const & cpy);
-			void pushMainVector();
+			void	pushMainVector();
+			void	printPair(void);
+			bool	duplicateNumber(std::vector<std::pair<int, int> > mainArray);
 };
