@@ -18,7 +18,7 @@ void MergeMe::printPair()
 {
 	for(size_t i = 0; i < this->_mainArray.size(); i++)
 	{
-		std::cout << this->_mainArray[i].first << "\n";
+		std::cout << this->_mainArray[i].first << " ";
 		std::cout << this->_mainArray[i].second << std::endl;
 	}
 }
@@ -52,6 +52,10 @@ void MergeMe::pushMainVector()
 	int count = 0;
 	int first = 0;
 	int second = 0;
+	if (this->_input.length() < 2)
+	{
+		std::cerr << "Digits are less than 2" << std::endl;
+	}
 	for (size_t i = 0; i < this->_input.length(); i++)
 	{
 		if (line >> value)
@@ -94,3 +98,18 @@ void MergeMe::pushMainVector()
 	}
 	printPair();
 }
+
+void MergeMe::sortPair()
+{
+	for(size_t i = 0; i < this->_mainArray.size(); i++)
+	{
+		if (this->_mainArray[i].first < this->_mainArray[i].second)
+		{
+			std::swap(this->_mainArray[i].first, this->_mainArray[i].second);
+		}
+	}
+	std::cout << "----------" << std::endl;
+	printPair();
+}
+
+MergeMe::~MergeMe() {}

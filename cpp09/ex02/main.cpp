@@ -1,8 +1,15 @@
 #include "PmergeME.hpp"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	MergeMe test("2 3 4 5 5 8 6 7");
+	if (argc != 2)
+	{
+		std::cerr << "Invalid N of argument provided " << argc << " expected 2" << std::endl;
+		return (0);
+	}
+	std::string input = argv[1];
+	MergeMe test(input);
 	test.pushMainVector();
+	test.sortPair();
 	return (0);
 }
