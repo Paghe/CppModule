@@ -10,6 +10,7 @@ class MergeMe
 	private:
 			std::vector<std::pair<int, int> > _mainArray;
 			std::string	_input;
+			bool _straggler;
 	public:
 			MergeMe(std::string input);
 			MergeMe(const MergeMe & cpy);

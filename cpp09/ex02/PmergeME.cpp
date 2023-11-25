@@ -1,8 +1,8 @@
 #include "PmergeME.hpp"
 
-MergeMe::MergeMe(std::string input) : _input(input) {}
+MergeMe::MergeMe(std::string input) : _input(input), _straggler(false){}
 
-MergeMe::MergeMe(const MergeMe &cpy) : _mainArray(cpy._mainArray), _input(cpy._input){}
+MergeMe::MergeMe(const MergeMe &cpy) : _mainArray(cpy._mainArray), _input(cpy._input), _straggler(cpy._straggler){}
 
 MergeMe& MergeMe::operator=(const MergeMe &cpy)
 {
@@ -10,6 +10,7 @@ MergeMe& MergeMe::operator=(const MergeMe &cpy)
 	{
 		this->_input = cpy._input;
 		this->_mainArray = cpy._mainArray;
+		this->_straggler = cpy._straggler;
 	}
 	return (*this);
 }
@@ -88,8 +89,8 @@ void MergeMe::pushMainVector()
 	}
 	if (count == 1)
 	{
-		std::cout << "straggler ----> " << first << std::endl;
  		this->_mainArray.push_back(std::make_pair(first, -1));
+		this->_straggler = true;
 	}
 	if (duplicateNumber(this->_mainArray))
 	{
@@ -97,6 +98,7 @@ void MergeMe::pushMainVector()
 		return ;
 	}
 }
+
 
 void MergeMe::sortPair()
 {
@@ -107,7 +109,15 @@ void MergeMe::sortPair()
 			std::swap(this->_mainArray[i].first, this->_mainArray[i].second);
 		}
 	}
-	merge(this->_mainArray);
+	if (this->_straggler)
+	{
+		std::pair<int, int> lastPair = this->_mainArray.back();
+		this->_mainArray.pop_back();
+		merge(this->_mainArray);
+		this->_mainArray.push_back(lastPair);
+	}
+	else
+		merge(this->_mainArray);
 	printPair();
 }
 
