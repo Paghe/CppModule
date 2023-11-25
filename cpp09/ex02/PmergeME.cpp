@@ -96,20 +96,77 @@ void MergeMe::pushMainVector()
 		std::cerr << "Error: " << "duplicate numbers are not allowed" << std::endl;
 		return ;
 	}
-	printPair();
 }
 
 void MergeMe::sortPair()
 {
 	for(size_t i = 0; i < this->_mainArray.size(); i++)
 	{
-		if (this->_mainArray[i].first < this->_mainArray[i].second)
+		if (this->_mainArray[i].first > this->_mainArray[i].second)
 		{
 			std::swap(this->_mainArray[i].first, this->_mainArray[i].second);
 		}
 	}
-	std::cout << "----------" << std::endl;
+	merge(this->_mainArray);
 	printPair();
+}
+
+void merge(std::vector<std::pair<int, int> > &array)
+{
+	int size = array.size();
+	if (size <= 1)
+		return ;
+	int mid = size / 2;
+	int i = 0;
+	std::vector<std::pair<int, int> > arrayLeft;
+	std::vector<std::pair<int, int> > arrayRight;
+	for(; i < size; i++)
+	{
+		if (i < mid)
+			arrayLeft.push_back(array[i]);
+		else
+			arrayRight.push_back(array[i]);
+	}
+	merge(arrayLeft);
+	merge(arrayRight);
+	mergeSortVector(arrayLeft, arrayRight, array);
+}
+
+void mergeSortVector(std::vector<std::pair<int, int> > &arrayLeft,
+			   	std::vector<std::pair<int, int> > &arrayRight,
+				   std::vector<std::pair<int, int> > &mainArray)
+{
+	int leftSize = mainArray.size() / 2;
+	int rightSize = mainArray.size() - leftSize;
+	int left = 0;
+	int right = 0;
+	int i = 0;
+	while (left < leftSize && right < rightSize)
+	{
+		if (arrayLeft[left].second < arrayRight[right].second)
+		{
+			mainArray[i] = arrayLeft[left];
+			left++;
+		}
+		else
+		{
+			mainArray[i] = arrayRight[right];
+			right++;
+		}
+		i++;
+	}
+	while (left < leftSize)
+	{
+		mainArray[i] = arrayLeft[left];
+		left++;
+		i++;
+	}
+	while (right < rightSize)
+	{
+		mainArray[i] = arrayRight[right];
+		right++;
+		i++;
+	}
 }
 
 MergeMe::~MergeMe() {}
