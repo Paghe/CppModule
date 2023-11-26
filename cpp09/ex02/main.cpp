@@ -11,5 +11,6 @@ int	main(int argc, char **argv)
 	MergeMe test(input);
 	test.pushMainVector();
 	test.sortPair();
+	test.buildChain();
 	return (0);
 }

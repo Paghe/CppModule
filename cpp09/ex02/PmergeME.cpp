@@ -1,6 +1,6 @@
 #include "PmergeME.hpp"
 
-MergeMe::MergeMe(std::string input) : _input(input), _straggler(false){}
+MergeMe::MergeMe(std::string input) : _input(input), _straggler(false) {}
 
 MergeMe::MergeMe(const MergeMe &cpy) : _mainArray(cpy._mainArray), _input(cpy._input), _straggler(cpy._straggler){}
 
@@ -109,12 +109,11 @@ void MergeMe::sortPair()
 			std::swap(this->_mainArray[i].first, this->_mainArray[i].second);
 		}
 	}
-	if (this->_straggler)
+	if (this->_straggler && !this->_mainArray.empty())
 	{
-		std::pair<int, int> lastPair = this->_mainArray.back();
+		this->_lastPair = this->_mainArray.back();
 		this->_mainArray.pop_back();
 		merge(this->_mainArray);
-		this->_mainArray.push_back(lastPair);
 	}
 	else
 		merge(this->_mainArray);
@@ -177,6 +176,24 @@ void mergeSortVector(std::vector<std::pair<int, int> > &arrayLeft,
 		right++;
 		i++;
 	}
+}
+
+void printChain(std::vector<int> chain)
+{
+	for (size_t i = 0; i < chain.size(); i++)
+		std::cout << chain[i] << " ";
+	std::cout << "\n";
+}
+
+void MergeMe::buildChain()
+{
+	size_t i = 0;
+	for (; i < this->_mainArray.size(); i++)
+		this->_mainChain.push_back(this->_mainArray[i].second);
+	for (i = 0; i < this->_mainArray.size(); i++)
+		this->_pendChain.push_back(this->_mainArray[i].first);
+	printChain(this->_mainChain);
+	printChain(this->_pendChain);
 }
 
 MergeMe::~MergeMe() {}

@@ -11,6 +11,9 @@ class MergeMe
 			std::vector<std::pair<int, int> > _mainArray;
 			std::string	_input;
 			bool _straggler;
+			std::vector<int> _mainChain;
+			std::vector<int> _pendChain;
+			std::pair<int, int> _lastPair;
 	public:
 			MergeMe(std::string input);
 			MergeMe(const MergeMe & cpy);
@@ -20,6 +23,7 @@ class MergeMe
 			void	printPair();
 			bool	duplicateNumber(std::vector<std::pair<int, int> > mainArray);
 			void	sortPair();
+			void	buildChain();
 };
 
 void	merge(std::vector<std::pair<int, int> > &array);
