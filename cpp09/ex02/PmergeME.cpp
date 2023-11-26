@@ -117,7 +117,6 @@ void MergeMe::sortPair()
 	}
 	else
 		merge(this->_mainArray);
-	printPair();
 }
 
 void merge(std::vector<std::pair<int, int> > &array)
@@ -192,8 +191,8 @@ void MergeMe::buildChain()
 		this->_mainChain.push_back(this->_mainArray[i].second);
 	for (i = 0; i < this->_mainArray.size(); i++)
 		this->_pendChain.push_back(this->_mainArray[i].first);
-	printChain(this->_mainChain);
-	printChain(this->_pendChain);
+	this->_mainChain.insert(this->_mainChain.begin(), this->_pendChain[0]);
+	this->_pendChain.erase(this->_pendChain.begin());
 }
 
 MergeMe::~MergeMe() {}
