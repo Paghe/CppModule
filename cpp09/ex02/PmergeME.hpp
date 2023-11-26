@@ -13,7 +13,10 @@ class MergeMe
 			bool _straggler;
 			std::vector<int> _mainChain;
 			std::vector<int> _pendChain;
+			std::vector<int> _jacobNumber;
 			std::pair<int, int> _lastPair;
+			std::vector<int> _combNumber;
+
 	public:
 			MergeMe(std::string input);
 			MergeMe(const MergeMe & cpy);
@@ -24,6 +27,8 @@ class MergeMe
 			bool	duplicateNumber(std::vector<std::pair<int, int> > mainArray);
 			void	sortPair();
 			void	buildChain();
+			void 	pushJacob();
+			void	jacobPlusIdx();
 };
 
 void	merge(std::vector<std::pair<int, int> > &array);

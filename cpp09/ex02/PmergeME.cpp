@@ -177,11 +177,27 @@ void mergeSortVector(std::vector<std::pair<int, int> > &arrayLeft,
 	}
 }
 
+int jacobSthal(int n)
+{
+	if (n == 0)
+		return (0);
+	else if (n == 1)
+		return (1);
+	else
+		return (jacobSthal(n - 1) + 2 * jacobSthal(n - 2));
+}
+
 void printChain(std::vector<int> chain)
 {
 	for (size_t i = 0; i < chain.size(); i++)
 		std::cout << chain[i] << " ";
 	std::cout << "\n";
+}
+
+void MergeMe::pushJacob()
+{
+	for (size_t i = 0; i < this->_pendChain.size(); i++)
+		this->_jacobNumber.push_back(jacobSthal(i));
 }
 
 void MergeMe::buildChain()
@@ -191,8 +207,26 @@ void MergeMe::buildChain()
 		this->_mainChain.push_back(this->_mainArray[i].second);
 	for (i = 0; i < this->_mainArray.size(); i++)
 		this->_pendChain.push_back(this->_mainArray[i].first);
+	pushJacob();
+	jacobPlusIdx();
 	this->_mainChain.insert(this->_mainChain.begin(), this->_pendChain[0]);
 	this->_pendChain.erase(this->_pendChain.begin());
+}
+
+void	MergeMe::jacobPlusIdx()
+{
+	for (size_t i = 0;  i < this->_pendChain.size(); i++)
+	{
+		int n = this->_jacobNumber[i];
+		if (n == 0)
+			this->_combNumber.push_back(n);
+		else
+			while(n > this->_jacobNumber[i - 1])
+			{
+				this->_combNumber.push_back(n);
+				n--;
+			}
+	}
 }
 
 MergeMe::~MergeMe() {}
