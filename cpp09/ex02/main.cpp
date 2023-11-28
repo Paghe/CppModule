@@ -12,5 +12,6 @@ int	main(int argc, char **argv)
 	test.pushMainVector();
 	test.sortPair();
 	test.buildChain();
+	test.insertNumber();
 	return (0);
 }

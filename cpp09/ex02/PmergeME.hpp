@@ -29,6 +29,8 @@ class MergeMe
 			void	buildChain();
 			void 	pushJacob();
 			void	jacobPlusIdx();
+			int		binarySearch(int n);
+			void	insertNumber();
 };
 
 void	merge(std::vector<std::pair<int, int> > &array);

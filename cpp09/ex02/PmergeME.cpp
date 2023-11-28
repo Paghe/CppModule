@@ -196,8 +196,15 @@ void printChain(std::vector<int> chain)
 
 void MergeMe::pushJacob()
 {
-	for (size_t i = 0; i < this->_pendChain.size(); i++)
-		this->_jacobNumber.push_back(jacobSthal(i));
+	size_t jacob;
+	size_t size = this->_pendChain.size() - 1;
+	int i = 3;
+	jacob = jacobSthal(i);
+	while ((jacob = jacobSthal(i)) < size - 1)
+	{
+		this->_jacobNumber.push_back(jacob);
+		i++;
+	}
 }
 
 void MergeMe::buildChain()
@@ -207,26 +214,66 @@ void MergeMe::buildChain()
 		this->_mainChain.push_back(this->_mainArray[i].second);
 	for (i = 0; i < this->_mainArray.size(); i++)
 		this->_pendChain.push_back(this->_mainArray[i].first);
-	pushJacob();
-	jacobPlusIdx();
 	this->_mainChain.insert(this->_mainChain.begin(), this->_pendChain[0]);
 	this->_pendChain.erase(this->_pendChain.begin());
 }
 
 void	MergeMe::jacobPlusIdx()
 {
-	for (size_t i = 0;  i < this->_pendChain.size(); i++)
+	size_t j;
+	size_t prevPos = 1;
+	for (size_t i = 0;  i < this->_jacobNumber.size(); i++)
 	{
-		int n = this->_jacobNumber[i];
-		if (n == 0)
-			this->_combNumber.push_back(n);
-		else
-			while(n > this->_jacobNumber[i - 1])
-			{
-				this->_combNumber.push_back(n);
-				n--;
-			}
+		size_t n = this->_jacobNumber.at(i);
+		this->_combNumber.push_back(n);
+		j = n - 1;
+		while( j > prevPos)
+		{
+			this->_combNumber.push_back(j);
+			j--;
+		}
+		prevPos = n;
 	}
+}
+
+int	MergeMe::binarySearch(int n)
+{
+	int left = 0;
+	int right = this->_mainChain.size() - 1;
+	int mid = (left + right) / 2;
+	pushJacob();
+	jacobPlusIdx();
+	while (left <= right)
+	{
+		mid = (left + right) / 2;
+		if (n > this->_mainChain[mid])
+			left = mid + 1;
+		else
+			right = mid - 1;
+	}
+	if (n > this->_mainChain[mid])
+		return (mid + 1);
+	else
+		return (mid);
+}
+
+
+void	MergeMe::insertNumber()
+{
+	if (this->_pendChain.size() == 1)
+		binarySearch(this->_pendChain[0]);
+	int pos;
+	for (size_t i = 0; i < this->_pendChain.size(); i++)
+	{
+		pos = binarySearch(this->_pendChain[i]);
+		this->_mainChain.insert(this->_mainChain.begin() + pos, this->_pendChain[i]);
+	}
+	if (this->_straggler)
+	{
+		pos = binarySearch(this->_lastPair.second);
+		this->_mainChain.insert(this->_mainChain.begin() + pos, this->_lastPair.second);
+	}
+	printChain(this->_mainChain);
 }
 
 MergeMe::~MergeMe() {}
