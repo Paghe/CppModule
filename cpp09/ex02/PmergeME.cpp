@@ -95,7 +95,7 @@ void MergeMe::pushMainVector()
 	if (duplicateNumber(this->_mainArray))
 	{
 		std::cerr << "Error: " << "duplicate numbers are not allowed" << std::endl;
-		return ;
+		exit(1);
 	}
 }
 
@@ -273,7 +273,29 @@ void	MergeMe::insertNumber()
 		pos = binarySearch(this->_lastPair.second);
 		this->_mainChain.insert(this->_mainChain.begin() + pos, this->_lastPair.second);
 	}
-	printChain(this->_mainChain);
+}
+
+int	MergeMe::checkSort()
+{
+	std::vector<int>::iterator it = this->_mainChain.begin();
+	int i = 1;
+	while (it != this->_mainChain.end())
+	{
+		std::vector<int>::iterator it2 = this->_mainChain.begin() + i;
+		while (it2 != this->_mainChain.end())
+		{
+			if (*it > *it2)
+			{
+				std::cout << "KO!" << std::endl;
+				return(0);
+			}
+			it2++;
+		}
+		it++;
+		i++;
+	}
+	std::cout << "OK!" << std::endl;
+	return (1);
 }
 
 MergeMe::~MergeMe() {}

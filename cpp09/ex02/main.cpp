@@ -13,5 +13,6 @@ int	main(int argc, char **argv)
 	test.sortPair();
 	test.buildChain();
 	test.insertNumber();
+	/*test.checkSort();*/
 	return (0);
 }

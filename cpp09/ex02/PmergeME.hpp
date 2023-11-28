@@ -31,6 +31,7 @@ class MergeMe
 			void	jacobPlusIdx();
 			int		binarySearch(int n);
 			void	insertNumber();
+			int 	checkSort();
 };
 
 void	merge(std::vector<std::pair<int, int> > &array);
