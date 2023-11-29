@@ -253,12 +253,12 @@ int	MergeMe::binarySearch(int n)
 	while (left <= right)
 	{
 		mid = (left + right) / 2;
-		if (n > this->_mainChain[mid])
+		if (n > this->_mainChain.at(mid))
 			left = mid + 1;
 		else
 			right = mid - 1;
 	}
-	if (n > this->_mainChain[mid])
+	if (n > this->_mainChain.at(mid))
 		return (mid + 1);
 	else
 		return (mid);
@@ -283,10 +283,12 @@ void	MergeMe::insertNumber()
 	}
 	pushJacob();
 	jacobPlusIdx();
-	for (size_t i = 0; i < this->_pendChain.size(); i++)
+	int idx;
+	for (size_t i = 0; i < this->_combNumber.size(); i++)
 	{
-		pos = binarySearch(this->_pendChain[i]);
-		this->_mainChain.insert(this->_mainChain.begin() + pos, this->_pendChain[i]);
+		idx = this->_combNumber[i];
+		pos = binarySearch(this->_pendChain[idx]);
+		this->_mainChain.insert(this->_mainChain.begin() + pos, this->_pendChain[idx]);
 	}
 	if (this->_straggler)
 	{
