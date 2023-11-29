@@ -1,7 +1,13 @@
 #include "PmergeME.hpp"
 
+void leaks(void)
+{
+	system("leaks PmergeMe");
+}
+
 int	main(int argc, char **argv)
 {
+//	atexit(leaks);
 	if (argc != 2)
 	{
 		std::cerr << "Invalid N of argument provided " << argc << " expected 2" << std::endl;
@@ -13,6 +19,6 @@ int	main(int argc, char **argv)
 	test.sortPair();
 	test.buildChain();
 	test.insertNumber();
-	/*test.checkSort();*/
+	test.checkSort();
 	return (0);
 }

@@ -9,13 +9,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7714e3e1-6a47-4608-8151-bd48e057e879" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp09/ex02/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex02/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp09/ex02/PmergeME.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex02/PmergeME.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp09/ex02/PmergeME.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex02/PmergeME.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp09/ex02/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex02/main.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="7714e3e1-6a47-4608-8151-bd48e057e879" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -215,6 +209,7 @@
       <workItem from="1701074865271" duration="3499000" />
       <workItem from="1701090042970" duration="12460000" />
       <workItem from="1701172965344" duration="5847000" />
+      <workItem from="1701189745287" duration="2408000" />
     </task>
     <servers />
   </component>

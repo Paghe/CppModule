@@ -19,9 +19,13 @@ void MergeMe::printPair()
 {
 	for(size_t i = 0; i < this->_mainArray.size(); i++)
 	{
-		std::cout << this->_mainArray[i].first << " ";
-		std::cout << this->_mainArray[i].second << std::endl;
+		if (this->_mainArray[i].first >= 0)
+			std::cout << this->_mainArray[i].first << " ";
+		if (this->_mainArray[i].second >= 0)
+			std::cout << this->_mainArray[i].second << " ";
 	}
+	std::cout << "\n";
+	std::cout << "\n";
 }
 
 bool MergeMe::duplicateNumber(std::vector<std::pair<int, int> > mainArray)
@@ -56,6 +60,7 @@ void MergeMe::pushMainVector()
 	if (this->_input.length() < 2)
 	{
 		std::cerr << "Digits are less than 2" << std::endl;
+		exit(1);
 	}
 	for (size_t i = 0; i < this->_input.length(); i++)
 	{
@@ -97,6 +102,9 @@ void MergeMe::pushMainVector()
 		std::cerr << "Error: " << "duplicate numbers are not allowed" << std::endl;
 		exit(1);
 	}
+	std::cout << "\n";
+	std::cout << "Before: ";
+	printPair();
 }
 
 
@@ -192,12 +200,13 @@ void printChain(std::vector<int> chain)
 	for (size_t i = 0; i < chain.size(); i++)
 		std::cout << chain[i] << " ";
 	std::cout << "\n";
+	std::cout << "\n";
 }
 
 void MergeMe::pushJacob()
 {
 	size_t jacob;
-	size_t size = this->_pendChain.size() - 1;
+	size_t size = this->_pendChain.size();
 	int i = 3;
 	jacob = jacobSthal(i);
 	while ((jacob = jacobSthal(i)) < size - 1)
@@ -241,8 +250,6 @@ int	MergeMe::binarySearch(int n)
 	int left = 0;
 	int right = this->_mainChain.size() - 1;
 	int mid = (left + right) / 2;
-	pushJacob();
-	jacobPlusIdx();
 	while (left <= right)
 	{
 		mid = (left + right) / 2;
@@ -260,9 +267,22 @@ int	MergeMe::binarySearch(int n)
 
 void	MergeMe::insertNumber()
 {
-	if (this->_pendChain.size() == 1)
-		binarySearch(this->_pendChain[0]);
 	int pos;
+	if (this->_pendChain.size() == 1)
+	{
+		pos = binarySearch(this->_pendChain[0]);
+		this->_mainChain.insert(this->_mainChain.begin() + pos, this->_pendChain[0]);
+		if (this->_straggler)
+		{
+			pos = binarySearch(this->_lastPair.second);
+			this->_mainChain.insert(this->_mainChain.begin() + pos, this->_lastPair.second);
+		}
+		std::cout << "After: ";
+		printChain(this->_mainChain);
+		return ;
+	}
+	pushJacob();
+	jacobPlusIdx();
 	for (size_t i = 0; i < this->_pendChain.size(); i++)
 	{
 		pos = binarySearch(this->_pendChain[i]);
@@ -273,6 +293,8 @@ void	MergeMe::insertNumber()
 		pos = binarySearch(this->_lastPair.second);
 		this->_mainChain.insert(this->_mainChain.begin() + pos, this->_lastPair.second);
 	}
+	std::cout << "After: ";
+	printChain(this->_mainChain);
 }
 
 int	MergeMe::checkSort()
