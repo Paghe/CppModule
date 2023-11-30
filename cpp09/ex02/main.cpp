@@ -15,10 +15,18 @@ int	main(int argc, char **argv)
 	}
 	std::string input = argv[1];
 	MergeMe test(input);
-	test.pushMainVector();
-	test.sortPair();
-	test.buildChain();
-	test.insertNumber();
+	MergeMeDeque test1(input);
+	std::cout << "\n";
+	std::cout << "\n";
+	test.fordJohnson();
+	std::cout << "\n";
+	std::cout << "\n";
+	test1.fordJohnson();
+	std::cout << "\n";
+	std::cout << "------------ VECTOR ------------" << "\n";
 	test.checkSort();
+	std::cout << "\n";
+	std::cout << "------------ DEQUE ------------" << "\n";
+	test1.checkSort();
 	return (0);
 }
