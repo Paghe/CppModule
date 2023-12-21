@@ -6,6 +6,7 @@
 #include <iostream>
 #include <deque>
 #include <sys/time.h>
+#include <iomanip>
 
 class MergeMe
 {

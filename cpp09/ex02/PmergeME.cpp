@@ -208,8 +208,7 @@ void MergeMe::pushJacob()
 	size_t jacob;
 	size_t size = this->_pendChain.size();
 	int i = 3;
-	jacob = jacobSthal(i);
-	while ((jacob = jacobSthal(i)) < size)
+	while ((jacob = jacobSthal(i)) < size - 1)
 	{
 		this->_jacobNumber.push_back(jacob);
 		i++;
@@ -224,16 +223,16 @@ void MergeMe::buildChain()
 	for (i = 0; i < this->_mainArray.size(); i++)
 		this->_pendChain.push_back(this->_mainArray[i].first);
 	this->_mainChain.insert(this->_mainChain.begin(), this->_pendChain[0]);
-	this->_pendChain.erase(this->_pendChain.begin());
 }
 
 void	MergeMe::jacobPlusIdx()
 {
 	size_t j;
+	size_t n = 1;
 	size_t prevPos = 1;
 	for (size_t i = 0;  i < this->_jacobNumber.size(); i++)
 	{
-		size_t n = this->_jacobNumber.at(i);
+		n = this->_jacobNumber.at(i);
 		this->_combNumber.push_back(n);
 		j = n - 1;
 		while( j > prevPos)
@@ -242,6 +241,11 @@ void	MergeMe::jacobPlusIdx()
 			j--;
 		}
 		prevPos = n;
+	}
+	if (n < this->_pendChain.size())
+	{
+		for (; n < this->_pendChain.size(); n++)
+			this->_combNumber.push_back(n);
 	}
 }
 
@@ -278,7 +282,7 @@ void	MergeMe::insertNumber()
 			pos = binarySearch(this->_lastPair.second);
 			this->_mainChain.insert(this->_mainChain.begin() + pos, this->_lastPair.second);
 		}
-		std::cout << "After: ";
+		std::cout << "After using vector: ";
 		printChain(this->_mainChain);
 		return ;
 	}
@@ -287,7 +291,7 @@ void	MergeMe::insertNumber()
 	int idx;
 	for (size_t i = 0; i < this->_combNumber.size(); i++)
 	{
-		idx = this->_combNumber[i];
+		idx = this->_combNumber[i] - 1;
 		pos = binarySearch(this->_pendChain[idx]);
 		this->_mainChain.insert(this->_mainChain.begin() + pos, this->_pendChain[idx]);
 	}
@@ -296,7 +300,7 @@ void	MergeMe::insertNumber()
 		pos = binarySearch(this->_lastPair.second);
 		this->_mainChain.insert(this->_mainChain.begin() + pos, this->_lastPair.second);
 	}
-	std::cout << "After: ";
+	std::cout << "After using vector: ";
 	printChain(this->_mainChain);
 }
 
@@ -334,7 +338,10 @@ void MergeMe::fordJohnson()
 	buildChain();
 	insertNumber();
 	gettimeofday(&end, NULL);
-	std::cout << 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec << std::endl;
+	unsigned long long micro = static_cast<unsigned long long> (1000000 * (end.tv_sec - start.tv_sec)
+																+ end.tv_usec - start.tv_usec);
+	double microSec = static_cast<double>(micro);
+	std::cout << "Time to process a range of " << this->_mainChain.size() <<" elements with vector: " << microSec << "us" << std::endl;
 }
 
 MergeMe::~MergeMe() {}
@@ -539,8 +546,7 @@ void MergeMeDeque::pushJacob()
 	size_t jacob;
 	size_t size = this->_pendChain.size();
 	int i = 3;
-	jacob = jacobSthal(i);
-	while ((jacob = jacobSthal(i)) < size)
+	while ((jacob = jacobSthal(i)) < size - 1)
 	{
 		this->_jacobNumber.push_back(jacob);
 		i++;
@@ -555,16 +561,16 @@ void MergeMeDeque::buildChain()
 	for (i = 0; i < this->_mainArray.size(); i++)
 		this->_pendChain.push_back(this->_mainArray[i].first);
 	this->_mainChain.insert(this->_mainChain.begin(), this->_pendChain[0]);
-	this->_pendChain.erase(this->_pendChain.begin());
 }
 
 void	MergeMeDeque::jacobPlusIdx()
 {
 	size_t j;
+	size_t n = 1;
 	size_t prevPos = 1;
 	for (size_t i = 0;  i < this->_jacobNumber.size(); i++)
 	{
-		size_t n = this->_jacobNumber.at(i);
+		n = this->_jacobNumber.at(i);
 		this->_combNumber.push_back(n);
 		j = n - 1;
 		while( j > prevPos)
@@ -574,6 +580,8 @@ void	MergeMeDeque::jacobPlusIdx()
 		}
 		prevPos = n;
 	}
+	for (;n < this->_pendChain.size(); ++n)
+			this->_combNumber.push_back(n + 1);
 }
 
 int	MergeMeDeque::binarySearch(int n)
@@ -599,35 +607,35 @@ int	MergeMeDeque::binarySearch(int n)
 void	MergeMeDeque::insertNumber()
 {
 	int pos;
-	if (this->_pendChain.size() == 1)
+	if (this->_pendChain.size() == 2)
 	{
-
-		pos = binarySearch(this->_pendChain[0]);
-		this->_mainChain.insert(this->_mainChain.begin() + pos, this->_pendChain[0]);
+		pos = binarySearch(this->_pendChain[1]);
+		this->_mainChain.insert(this->_mainChain.begin() + pos, this->_pendChain[1]);
 		if (this->_straggler)
 		{
 			pos = binarySearch(this->_lastPair.second);
 			this->_mainChain.insert(this->_mainChain.begin() + pos, this->_lastPair.second);
 		}
-		std::cout << "After: ";
+		std::cout << "After using deque: ";
 		printChain(this->_mainChain);
 		return ;
 	}
 	pushJacob();
 	jacobPlusIdx();
-	int idx;
-	for (size_t i = 0; i < this->_combNumber.size(); i++)
+	int	number;
+	std::deque<int>::iterator it = this->_combNumber.begin();
+	for (; it < this->_combNumber.end(); it++)
 	{
-		idx = this->_combNumber[i];
-		pos = binarySearch(this->_pendChain[idx]);
-		this->_mainChain.insert(this->_mainChain.begin() + pos, this->_pendChain[idx]);
+		number = this->_pendChain.at(*it - 1);
+		pos = binarySearch(number);
+		this->_mainChain.insert(this->_mainChain.begin() + pos, number);
 	}
 	if (this->_straggler)
 	{
 		pos = binarySearch(this->_lastPair.second);
 		this->_mainChain.insert(this->_mainChain.begin() + pos, this->_lastPair.second);
 	}
-	std::cout << "After: ";
+	std::cout << "After using deque: ";
 	printChain(this->_mainChain);
 }
 
@@ -665,7 +673,10 @@ void MergeMeDeque::fordJohnson()
 	buildChain();
 	insertNumber();
 	gettimeofday(&end, NULL);
-	std::cout << 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec << std::endl;
+	unsigned long long micro = static_cast<unsigned long long> (1000000 * (end.tv_sec - start.tv_sec)
+																	+ end.tv_usec - start.tv_usec);
+	double microSec = static_cast<double>(micro);
+	std::cout << "Time to process a range of " << this->_mainChain.size() <<" elements with deque: " << microSec << "us" << std::endl;
 }
 
 MergeMeDeque::~MergeMeDeque() {}

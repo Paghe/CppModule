@@ -22,7 +22,7 @@ Arg	min(Arg &first, Arg &second)
 {
 	if (first > second)
 		return (second);
-	else if (first  < second)
+	else if (first < second)
 		return (first);
 	else
 		return (second);
@@ -34,7 +34,7 @@ Arg	max(Arg &first, Arg &second)
 {
 	if (first < second)
 		return (second);
-	else if (first  > second)
+	else if (first > second)
 		return (first);
 	else
 		return (second);

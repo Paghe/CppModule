@@ -11,7 +11,14 @@
   <component name="ChangeListManager">
     <list default="true" id="7714e3e1-6a47-4608-8151-bd48e057e879" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp09/ex02/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex02/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpp05/ex02/Three_shrubbery" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpp05/ex03/Three_shrubbery" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpp07/ex00/whatever.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp07/ex00/whatever.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpp07/ex01/iter.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp07/ex01/iter.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpp09/ex00/BitcoinExchange.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex00/BitcoinExchange.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpp09/ex00/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex00/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpp09/ex01/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex01/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpp09/ex01/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex01/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cpp09/ex02/PmergeME.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex02/PmergeME.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cpp09/ex02/PmergeME.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex02/PmergeME.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cpp09/ex02/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp09/ex02/main.cpp" afterDir="false" />
@@ -54,7 +61,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -218,7 +225,25 @@
       <workItem from="1701189745287" duration="2408000" />
       <workItem from="1701263406596" duration="2597000" />
       <workItem from="1701267020260" duration="4322000" />
-      <workItem from="1701335628251" duration="2714000" />
+      <workItem from="1701335628251" duration="3796000" />
+      <workItem from="1701345810635" duration="134000" />
+      <workItem from="1701349230875" duration="1875000" />
+      <workItem from="1701359225420" duration="915000" />
+      <workItem from="1701615793578" duration="2231000" />
+      <workItem from="1701702219254" duration="10000" />
+      <workItem from="1701702252409" duration="109000" />
+      <workItem from="1701785866767" duration="919000" />
+      <workItem from="1701878197981" duration="694000" />
+      <workItem from="1701943737494" duration="193000" />
+      <workItem from="1701949177956" duration="287000" />
+      <workItem from="1702031853856" duration="172000" />
+      <workItem from="1702041394536" duration="1000" />
+      <workItem from="1702577912353" duration="156000" />
+      <workItem from="1702727318006" duration="284000" />
+      <workItem from="1702740437508" duration="178000" />
+      <workItem from="1702897833470" duration="531000" />
+      <workItem from="1702989161969" duration="7388000" />
+      <workItem from="1703001661822" duration="2641000" />
     </task>
     <servers />
   </component>
